@@ -4,6 +4,7 @@ import { BrowserRouter, Route, Switch } from 'react-router-dom';
 import Home from './views/Home';
 import CreateOffer from './views/CreateOffer';
 import Login from './views/Login';
+import BarCodes from './views/BarCodes';
 
 
 const App: React.FC<AppProps> = (props) => {
@@ -21,6 +22,10 @@ const App: React.FC<AppProps> = (props) => {
 
 					<Route exact path='/login'>
 						<Login />
+					</Route>
+
+					<Route exact path='/barcodes'>
+						<BarCodes />
 					</Route>
 
 
