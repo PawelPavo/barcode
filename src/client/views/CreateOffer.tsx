@@ -9,9 +9,9 @@ const CreateOffer: React.FC<CreateOfferProps> = (props) => {
 
     const location = useLocation<{ msg: string }>();
 
-    const [name, setName] = useState<string>('Buy $10 Get $10');
-    const [description, setDescription] = useState<string>('Guest buys $10 of anything and gets $10 of anything.');
-    const [type, setType] = useState<string>('BOGO');
+    const [name, setName] = useState<string>('');
+    const [description, setDescription] = useState<string>('');
+    const [type, setType] = useState<string>('');
 
 
     const generate = async (e: React.MouseEvent<HTMLButtonElement>) => {
@@ -29,19 +29,19 @@ const CreateOffer: React.FC<CreateOfferProps> = (props) => {
 
             <section className="row justify-content-center my-5">
 
-                <form className="form-group p-3 border-primary rounded-lg-success">
+                <form className="form-group border-primary rounded-lg-success">
 
-                    <div className="shadow p-4 mb-4 bg-white">
+                    <div className="shadow p-4 mx-8 bg-white">
                         <h3 className="text-center"> Create Offer </h3>
 
                         <label>Marketing Offer Name</label>
-                        <input value={name} onChange={e => setName(e.target.value)} className="form-control my-2" />
+                        <input value={name} onChange={e => setName(e.target.value)} className="form-control my-5" />
 
                         <label>Marketing Offer Description</label>
-                        <input value={description} onChange={e => setDescription(e.target.value)} className="form-control my-2" />
+                        <input value={description} onChange={e => setDescription(e.target.value)} className="form-control my-5" />
 
                         <label>Promotion Type</label>
-                        <input value={type} onChange={e => setType(e.target.value)} className="form-control my-1" />
+                        <input value={type} onChange={e => setType(e.target.value)} className="form-control my-5" />
 
                         <button onClick={generate} className="btn">Generate Bar Codes</button>
 
