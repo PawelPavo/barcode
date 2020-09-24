@@ -2,7 +2,8 @@ import * as React from 'react';
 import { useState, useEffect } from 'react';
 import { useLocation, useHistory } from 'react-router-dom';
 import Navbar from '../components/Navbar';
-
+const crypto = require('crypto');
+const Barcode = require('react-barcode');
 
 const CreateOffer: React.FC<CreateOfferProps> = (props) => {
     const history = useHistory();
@@ -12,13 +13,23 @@ const CreateOffer: React.FC<CreateOfferProps> = (props) => {
     const [name, setName] = useState<string>('');
     const [description, setDescription] = useState<string>('');
     const [type, setType] = useState<string>('');
-
+    const [number, setNumber] = useState<string>()
+    const getCode = async () => {
+        try {
+            crypto.randomBytes(4, (err: string, buf: any) => {
+                const barcode = (buf.toString('hex'))
+                setNumber(barcode)
+            });
+        } catch (error) {
+            console.log(error)
+        }
+    }
 
     const generate = async (e: React.MouseEvent<HTMLButtonElement>) => {
         e.preventDefault();
 
-      
-        
+
+
         history.push('/');
     }
 
@@ -50,7 +61,15 @@ const CreateOffer: React.FC<CreateOfferProps> = (props) => {
                     </div>
                 </form>
             </section>
-
+            <div className="row justify-content-center">
+                <button
+                    onClick={() => getCode()}
+                    className="btn btn-danger">
+                    Generate Code</button>
+            </div>
+            <div className="row justify-content-center">
+                <Barcode value={`${number}`} />
+            </div>
         </main >
 
 
